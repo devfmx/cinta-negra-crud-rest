@@ -1,4 +1,7 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+
+const SALT_FACTOR = 10;
 
 
 const Schema = mongoose.Schema;
@@ -46,7 +49,7 @@ const UserSchema = new Schema({
 			ref: "posts"
 		}
 	],
-	
+
 
 	is_active: {
 		type: Boolean,
@@ -54,6 +57,26 @@ const UserSchema = new Schema({
 	}
 
 }, { "collection": "users", "timestamps": true });
+
+
+
+UserSchema.pre("save", function (next) {
+	let user = this;
+	if (!user.isModified("password")) { return next(); }
+	bcrypt.genSalt(SALT_FACTOR, function (err, salt) {
+		if (err) return next(err);
+		bcrypt.hash(user.password, salt,function (err, hash) {
+			if (err) return next(err);
+			user.password = hash;
+			next();
+		});
+	});
+
+
+
+});
+
+
 
 
 module.exports = mongoose.model("users", UserSchema);

@@ -43,9 +43,26 @@ const deleteUser = (req, res) => {
 };
 
 
+const me =  (req,res) => {
+	res.status(200).json(req.user);
+};
+
+const updateMe =  (req,res) => {
+	updateUserById(req.user._id,req.body).then((user) => {
+		if (!user) res.status(404).json({ "message": "User does not exist" });
+		res.status(200).json(user);
+	}).catch((e) => {
+		res.status(400).json(e);
+	});
+
+};
+
+
 module.exports = {
 	getUsers,
 	getUser,
 	updateUser,
-	deleteUser
+	deleteUser,
+	me,
+	updateMe
 };
