@@ -10,14 +10,16 @@
     "lint": "eslint app/"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.3.0"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^3.0.3",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.2",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.9"

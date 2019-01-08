@@ -39,6 +39,15 @@ const UserSchema = new Schema({
 			ref: "posts"
 		}
 	],
+
+	Liked: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "posts"
+		}
+	],
+	
+
 	is_active: {
 		type: Boolean,
 		default: true

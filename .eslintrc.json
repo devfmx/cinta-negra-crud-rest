@@ -6,7 +6,7 @@
     },
     "extends": ["eslint:recommended", "plugin:node/recommended",  "plugin:security/recommended"],
     "parserOptions": {
-        "ecmaVersion": 2016
+        "ecmaVersion": 2018
     },
     "rules": {
         "indent": ["error","tab"],
