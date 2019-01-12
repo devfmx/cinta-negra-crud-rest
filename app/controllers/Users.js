@@ -33,22 +33,21 @@ const updateUser = (req, res) => {
 };
 
 const deleteUser = (req, res) => {
-	deleteUserById(req.params.id).
-		then((user) => {
-			if (!user) res.status(404).json({ "message": "User does not exist" });
-			res.status(200).json({ "message": "User deleted seccessfully" });
-		}).catch((e) => {
-			res.status(400).json(e);
-		});
+	deleteUserById(req.params.id).then((user) => {
+		if (!user) res.status(404).json({ "message": "User does not exist" });
+		res.status(200).json({ "message": "User deleted seccessfully" });
+	}).catch((e) => {
+		res.status(400).json(e);
+	});
 };
 
 
-const me =  (req,res) => {
+const me = (req, res) => {
 	res.status(200).json(req.user);
 };
 
-const updateMe =  (req,res) => {
-	updateUserById(req.user._id,req.body).then((user) => {
+const updateMe = (req, res) => {
+	updateUserById(req.user._id, req.body).then((user) => {
 		if (!user) res.status(404).json({ "message": "User does not exist" });
 		res.status(200).json(user);
 	}).catch((e) => {

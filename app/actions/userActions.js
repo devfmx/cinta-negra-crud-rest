@@ -23,6 +23,9 @@ const updateUserById = (id,data) =>{
 	return User.findByIdAndUpdate(id,{$set:data},{new:true}).select("-password");
 };
 
+const addPostToUser = (id,post) => {
+	return User.findByIdAndUpdate(id,{$push:{posts:post}});
+};
 const deleteUserById =  (id)  => {
 	return User.findByIdAndUpdate({_id:id,is_active:true},{$set:{is_active:false}},{new:true});
 };
@@ -34,5 +37,6 @@ module.exports = {
 	getUserById,
 	getAllUsers,
 	updateUserById,
+	addPostToUser,
 	deleteUserById
 };
