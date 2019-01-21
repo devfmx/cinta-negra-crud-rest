@@ -36,6 +36,8 @@ const UserSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: "subscriptions"
 	},
+	posts: [{ type: Schema.Types.ObjectId, ref: "posts" }],
+
 	Liked: [
 		{
 			type: Schema.Types.ObjectId,
@@ -48,7 +50,6 @@ const UserSchema = new Schema({
 		default: true
 	},
 
-	posts: [{ type: Schema.Types.ObjectId, ref: "posts" }]
 
 
 }, { "collection": "users", "timestamps": true });
