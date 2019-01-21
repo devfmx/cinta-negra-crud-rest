@@ -2,7 +2,7 @@ const express = require("express");
 const { SignUp, LogIn } = require("../controllers/Auth");
 const { getUsers, getUser, updateUser, deleteUser, me, updateMe } = require("../controllers/Users");
 
-const { createPosts, getPosts, getOnePost, updatePost, deletePost } = require("../controllers/Posts");
+const { createPosts, getPosts, getOnePost, updatePost, deletePost, newsFeed } = require("../controllers/Posts");
 
 const isAuthenticated = require("../middlewares/isAuthenticated");
 
@@ -29,6 +29,7 @@ router.get("/posts/:id", isAuthenticated, getOnePost);
 router.patch("/posts/:id", isAuthenticated, updatePost);
 router.delete("/posts/:id", isAuthenticated, deletePost);
 
+router.get("/newsfeed",newsFeed);
 
 
 module.exports = router;

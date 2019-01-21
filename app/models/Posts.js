@@ -21,8 +21,8 @@ const PostSchema = new Schema({
 	tags: [{
 		type: String
 	}],
-
-	Likes: {
+	author: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
+	likes: {
 		type: Number,
 		default: 0
 	},
